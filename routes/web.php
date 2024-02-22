@@ -27,5 +27,7 @@ Route::post('/contact/confirm', [ContactController::class,'confirm'])->name('con
 //送信完了ページ
 Route::post('/contact/thanks', [ContactController::class,'send'])->name('contact.send');
 
-
-
+//お問い合わせ一覧
+Route::get('/contact/list',[ContactController::class,'list'])->name('contact.list');
+//お問い合わせ詳細
+Route::get('/contact/detail/{id}',[ContactController::class,'detail'])->whereNumber('id')->name('contact.detail');

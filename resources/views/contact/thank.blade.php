@@ -20,10 +20,10 @@
                 <h2>お問い合わせを受け付けました</h2>
                 <p>
                     受付が完了しました。<br>
-                    ありがとうございました。
+                    {{$name}}さん、ありがとうございました。
                 </p>
-                <div class="link">
-                    <a href="/">TOPに戻る</a>
+                <div class="contact_link">
+                    <a href="/contact">お問い合わせフォームに戻る</a>
                 </div>
             </div>
 

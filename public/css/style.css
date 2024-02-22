@@ -11,7 +11,7 @@
 .step_current {
     color: #fff;
     font-weight: bold;
-    background-color: #11990f;
+    background-color: #3eb6fc;
     padding:10px;
 }
 
@@ -26,7 +26,7 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 	padding: 2em 0;
-	border-bottom: 1px dashed #ccc;
+	border-bottom: 3px black;
 }
 
 .form_line th {
@@ -74,3 +74,44 @@ textarea {
 .thank h2{
     margin-top: 20px;
 }
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+.contact-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .contact-table th {
+    padding: 10px;
+    text-align: left;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* テーブルデータ行のスタイル（奇数行） */
+.contact-table tr:nth-child(odd) {
+    background-color: #fff;
+  }
+  
+  /* テーブルデータ行のスタイル（偶数行） */
+  .contact-table tr:nth-child(even) {
+    background-color: #cbc8c8;
+  }
+  
+  /* テーブルセルのスタイル */
+  .contact-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .contact_link{
+    text-align: center;
+  }
+
+  .management_link{
+    text-align: center;
+  }
