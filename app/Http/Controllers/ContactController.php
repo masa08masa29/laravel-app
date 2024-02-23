@@ -46,7 +46,9 @@ class ContactController extends Controller
 
         $data =$request->only(['name']);
         //dd($data);
+
         $attributes = $request->only(['name','mail','content']);
+
         Contact::create($attributes);
 
         return view('contact.thank',$data);
@@ -61,7 +63,7 @@ class ContactController extends Controller
     
     public function list(){
 
-        $contact_list = $this->contact_repository->getContactList();
+        $contact_list = Contact::latest()->paginate(10); 
 
         return view('contact.list',['contact_list' =>$contact_list]);
     }
@@ -70,22 +72,16 @@ class ContactController extends Controller
     {
         $contact_detail = Contact::find($id);
 
-        if (!$contact_detail) {
-            // 連絡先が見つからない場合のエラー処理
-            abort(404);
-        }
-
     return view('contact.detail', ['contact_detail' => $contact_detail]);
     }
     
     
     public function destroy($id)
     {
-        // Contactテーブルから指定のIDのレコード1件を取得
         $contact = Contact::find($id);
-        // レコードを削除
+        
         $contact->delete();
-        // 削除したらお問い合わせ一覧画面にリダイレクト
+
         return redirect()->route('contact.list');
     }
 }

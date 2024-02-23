@@ -115,3 +115,34 @@ textarea {
   .management_link{
     text-align: center;
   }
+
+  .btn btn-detail{
+    background-color: aqua;
+  }
+
+.contact_detail_container{
+    width: 80%; /* コンテンツの幅を指定 */
+    margin: 0 auto; /* 中央寄せにする場合 */
+  }
+
+.contact_detail ul {
+    list-style-type: none; /* 箇条書きリストのマーカーを削除 */
+    
+}
+.contact_detail ul li {
+    margin-bottom: 10px; /* 各項目の下に余白を設定 */
+    word-wrap: break-word; /* 長い単語を折り返す */
+    white-space: pre-wrap; /* テキストの改行を維持 */
+}
+
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-item{
+    margin-right: 50px
+}
+
+

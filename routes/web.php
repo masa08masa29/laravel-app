@@ -31,3 +31,6 @@ Route::post('/contact/thanks', [ContactController::class,'send'])->name('contact
 Route::get('/contact/list',[ContactController::class,'list'])->name('contact.list');
 //お問い合わせ詳細
 Route::get('/contact/detail/{id}',[ContactController::class,'detail'])->whereNumber('id')->name('contact.detail');
+//お問い合わせ削除
+Route::delete('/contact/destroy/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+
