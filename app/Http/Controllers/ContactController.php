@@ -9,7 +9,13 @@ use App\Repositories\ContactRepository;
 
 class ContactController extends Controller
 {
+    protected $contact_repository;
 
+    public function __construct(ContactRepository $contact_repository)
+    {
+        $this->contact_repository = $contact_repository;
+    }
+    
     public function index(){
 
         return view('contact.index');
@@ -21,23 +27,13 @@ class ContactController extends Controller
             'name' =>'required',
             'mail' =>'required|email',
             'mail_confirmation' =>'required|email|same:mail',
+            'title' =>'required',
             'content' =>'required',
         ];
 
-        $custom_messages =[
-            'name.required' =>'名前を入力してください',
-            'mail.required' => 'メールアドレスを入力してください',
-            'mail.email' => '正しいメールアドレスの形式で入力してください',
-            'mail_confirmation.required' => '確認用メールアドレスを入力してください',
-            'mail_confirmation.email' => '正しいメールアドレスの形式で入力してください',
-            'mail_confirmation.same' => 'メールアドレスと確認用メールアドレスが一致しません',
-            'content.required' => 'お問い合わせ内容を入力してください',
-        ];
-
-        $request->validate($validation_rules,$custom_messages);
+        $request->validate($validation_rules);
 
         $data = $request->all();
-        //dd($data);
 
         return view('contact.confirm',$data);
     }
@@ -47,40 +43,35 @@ class ContactController extends Controller
         $data =$request->only(['name']);
         //dd($data);
 
-        $attributes = $request->only(['name','mail','content']);
+        $attributes = $request->only(['name','mail','content','title']);
 
         Contact::create($attributes);
 
         return view('contact.thank',$data);
     }
 
-    protected $contact_repository;
-
-    public function __construct(ContactRepository $contact_repository)
-    {
-        $this->contact_repository = $contact_repository;
-    }
-    
     public function list(){
 
-        $contact_list = Contact::latest()->paginate(10); 
+        $contact_list = $this->contact_repository->getContactList(); 
 
         return view('contact.list',['contact_list' =>$contact_list]);
     }
 
     public function detail($id)
     {
-        $contact_detail = Contact::find($id);
+        $contact_detail = $this->contact_repository->getContactDetail($id);
 
-    return view('contact.detail', ['contact_detail' => $contact_detail]);
+        return view('contact.detail', ['contact_detail' => $contact_detail]);
     }
     
     
     public function destroy($id)
     {
-        $contact = Contact::find($id);
-        
-        $contact->delete();
+        $contact_destory = $this->contact_repository->ContactDestoy($id);
+
+        if($contact_destory){
+            $contact_destory->delete();
+        }
 
         return redirect()->route('contact.list');
     }

@@ -8,21 +8,21 @@ use Illuminate\Support\Facades\DB;
 
 class ContactRepository
 {
-    public function getContactList()
-    {
-      $contact_list_query = Contact::latest()->get();  
-      //dd($contact_list_query);
+    public function getContactList(){
+
+        return Contact::latest()->paginate(10);
+    }
+
+    public function getContactDetail($id){
       
-      return $contact_list_query;
+        return Contact::find($id);
     }
 
-    public function getContactDetail($id)
-    {
-        $data=Contact::find($id);
-        //dd($data);
-
-        return $data;
+    public function ContactDestoy($id){
+      
+        return Contact::find($id);
     }
+
 }
 
 

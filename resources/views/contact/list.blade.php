@@ -17,6 +17,7 @@
                   <th>日付</th>
                   <th>お名前</th>
                   <th>メールアドレス</th>
+                  <th>タイトル</th>
                   <th>詳細</th>
                   <th>削除</th>
                 </tr>
@@ -26,6 +27,7 @@
                   <td>{{$contact->created_at->format('Y年m月d日H:i')}}</td>
                   <td>{{$contact->name}}</td>
                   <td>{{$contact->mail}}</td>
+                  <td>{{$contact->title}}</td>
 
                   <td><a href="{{ route('contact.detail', ['id' => $contact->id]) }}">
                         <button type="submit" class="btn-detail">詳細</button>

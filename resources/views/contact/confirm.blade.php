@@ -39,8 +39,16 @@
                             </tr>
 
                             <tr class="form_line">
+                                <th class="form_item">タイトル<br></th>
+                                <td class="title_form">
+                                    <input type="hidden" name="title" value="{{$title}}">
+                                    {{$name}}
+                                </td>
+                            </tr>
+
+                            <tr class="form_line">
                                 <th class="form">お問い合わせ内容</th>
-                                <td class="form_content">
+                                <td class="content_form">
                                     <input type="hidden" name="content" value="{{$content}}">
                                     {{$content}}
                                 </td>

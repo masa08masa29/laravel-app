@@ -21,6 +21,13 @@ return [
     'alpha_dash'           => ':attributeには、英数字(\'A-Z\',\'a-z\',\'0-9\')とハイフンと下線(\'-\',\'_\')が使用できます。',
     'alpha_num'            => ':attributeには、英数字(\'A-Z\',\'a-z\',\'0-9\')が使用できます。',
     'array'                => ':attributeには、配列を指定してください。',
+    'attributes'            => [
+        'name'              =>'名前',
+        'mail'              =>'メールアドレス',
+        'mail_confirmation' =>'確認用メールアドレス',
+        'title'             =>'タイトル',
+        'content'           =>'お問い合わせ内容',
+    ],
     'before'               => ':attributeには、:dateより前の日付を指定してください。',
     'before_or_equal'      => ':attributeには、:date以前の日付を指定してください。',
     'between'              => [
@@ -80,6 +87,7 @@ return [
         'numeric' => ':attributeは、:value以下でなければなりません。',
         'string'  => ':attributeは、:value文字以下でなければなりません。',
     ],
+    'other'       => 'mail_confirmation',
     'mac_address'          => 'The :attribute must be a valid MAC address.',
     'max'                  => [
         'array'   => ':attributeの項目は、:max個以下にしてください。',
@@ -106,7 +114,7 @@ return [
     'prohibited_unless'    => ':attributeフィールドは、:otherが:valuesでない限り禁止されています。',
     'prohibits'            => 'The :attribute field prohibits :other from being present.',
     'regex'                => ':attributeには、有効な正規表現を指定してください。',
-    'required'             => ':attributeは、必ず指定してください。',
+    'required'             => ':attributeを入力してください',
     'required_array_keys'  => 'The :attribute field must contain entries for: :values.',
     'required_if'          => ':otherが:valueの場合、:attributeを指定してください。',
     'required_unless'      => ':otherが:values以外の場合、:attributeを指定してください。',
@@ -114,7 +122,7 @@ return [
     'required_with_all'    => ':valuesが全て指定されている場合、:attributeも指定してください。',
     'required_without'     => ':valuesが指定されていない場合、:attributeを指定してください。',
     'required_without_all' => ':valuesが全て指定されていない場合、:attributeを指定してください。',
-    'same'                 => ':attributeと:otherが一致しません。',
+    'same'                 => ':otherと:attributeが一致しません。',
     'size'                 => [
         'array'   => ':attributeの項目は、:size個にしてください。',
         'file'    => ':attributeには、:size KBのファイルを指定してください。',
@@ -133,4 +141,5 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
+    
 ];

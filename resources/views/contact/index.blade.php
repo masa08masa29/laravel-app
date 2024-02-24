@@ -24,8 +24,8 @@
                         <tbody>
                             <tr class="form_line">
                                 <th class="form_item">名前<br></th>
-                                <td class="name_form">
-                                <input type="text" name="name" value="{{ old('name') }}" placeholder="名前を入力して下さい">
+                                <td class="form_input">
+                                <input type="text" name="name" value="{{ old('name') }}" placeholder="名前を入力してください">
                                 </td>
                             </tr>
                             <div class="error-message">
@@ -36,8 +36,8 @@
 
                             <tr class="form_line">
                                 <th class="form_item">メールアドレス</th>
-                                <td class="mail_form">
-                                    <input type="email" name="mail" value="{{ old('mail') }}" placeholder="メールアドレスを入力して下さい">
+                                <td class="form_input">
+                                    <input type="email" name="mail" value="{{ old('mail') }}" placeholder="メールアドレスを入力してください">
                                 </td>
                             </tr>
                             <div class="error-message">
@@ -48,8 +48,8 @@
 
                             <tr class="form_line">
                                 <th class="form_item">メールアドレス<br>（確認用）</th>
-                                <td class="mail_confirmation_form">
-                                    <input type="email" name="mail_confirmation" value="{{ old('mail_confirmation') }}" placeholder="確認のため、もう一度メールアドレスを入力して下さい">
+                                <td class="form_input">
+                                    <input type="email" name="mail_confirmation" value="{{ old('mail_confirmation') }}" placeholder="もう一度メールアドレスを入力してください">
                                 </td>
                             </tr>
                             <div class="error-message">
@@ -59,9 +59,21 @@
                             </div>
 
                             <tr class="form_line">
-                                <th class="form">お問い合わせ内容</th>
-                                <td class="">
-                                    <textarea name="content" value="{{ old('content') }}" placeholder="お問い合わせ内容を入力して下さい"></textarea>
+                                <th class="form_item">タイトル</th>
+                                <td class="form_input">
+                                    <input type="text" name="title" value="{{ old('title') }}" placeholder="タイトルを入力してください">
+                                </td>
+                            </tr>
+                            <div class="error-message">
+                                @error('title')
+                                <li>{{$message}}</li>
+                                @enderror
+                            </div>
+
+                            <tr class="form_line">
+                                <th class="form_item">お問い合わせ内容</th>
+                                <td class="form_input">
+                                    <textarea name="content" value="{{ old('content') }}" placeholder="お問い合わせ内容を入力してください"></textarea>
                                 </td>
                             </tr>
                             <div class="error-message">

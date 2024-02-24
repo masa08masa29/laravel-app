@@ -1,9 +1,10 @@
+
 .contact h1{
     text-align: center;
 }
 
 .step{
-    margin:0 15%;
+    margin:0 30%;
     display:flex;
     justify-content: space-around;
 }
@@ -25,7 +26,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	padding: 2em 0;
+	padding: 0.3em 0;
 	border-bottom: 3px black;
 }
 
@@ -36,9 +37,19 @@
     line-height:1.5em;
 }
 
-.submit-btn{
-    width:20%;
-    margin-bottom:15px;
+.button{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.submit-btn {
+    width: 30%;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center; /* ボタン内のテキストを中央揃えにする */
 }
 
 .table_container {
@@ -47,24 +58,43 @@
     margin-top: 50px;
 }
 
-.submit-btn{
 
-    width: 50%; /* ボタンの幅 */
-}
-
-input{
+.form_line input{
     width:350px;
-    height: 30px;
+    height: 10px;
+    padding:15px;
+    border: 1.5px solid #ccc; /* 枠の線の太さと色を指定 */
 }
 
 textarea {
 	width: 350px;  /* 横幅 */
 	height: 300px; /* 高さ */
+    padding:15px;
+    border: 1.5px solid #ccc; /* 枠の線の太さと色を指定 */
 }
 
-.button{
-    text-align: center;
-    margin-top: 20px;
+/* inputとtextareaのフォントを同じにする */
+input[type="text"],
+input[type="email"],
+textarea {
+    font-family: 'Arial', sans-serif; /* フォント */
+    margin-bottom: 20px;
+
+}
+
+/* inputとtextareaのプレースホルダーのフォントを同じにする */
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+textarea::placeholder {
+    font-family: 'Arial', sans-serif; /* フォント */
+    font-size: 15px; /* フォントサイズ */
+    color: #999; /* プレースホルダーの文字色 */  
+}
+
+.detail-item {
+    border: 1.5px solid #ccc; /* 各項目の枠 */
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 .thank{
@@ -85,7 +115,7 @@ textarea {
     border-collapse: collapse;
   }
 
-  .contact-table th {
+.contact-table th {
     padding: 10px;
     text-align: left;
     background-color: #f2f2f2;
@@ -98,25 +128,26 @@ textarea {
   }
   
   /* テーブルデータ行のスタイル（偶数行） */
-  .contact-table tr:nth-child(even) {
+.contact-table tr:nth-child(even) {
     background-color: #cbc8c8;
   }
   
   /* テーブルセルのスタイル */
-  .contact-table td {
+.contact-table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
 
-  .contact_link{
+.contact_link{
+    text-align: center;
+    margin-top: 30px;
+  }
+
+.management_link{
     text-align: center;
   }
 
-  .management_link{
-    text-align: center;
-  }
-
-  .btn btn-detail{
+.btn btn-detail{
     background-color: aqua;
   }
 
@@ -146,3 +177,17 @@ textarea {
 }
 
 
+.name_form,
+.mail_form,
+.title_form,
+.content_form {
+    border: 2px solid #ccc;
+    padding: 8px;
+    width:350px;
+    height: auto;
+    word-wrap: break-word; /* テキストを折り返して表示 */
+}
+
+.form_item{
+    margin-top: 10px;
+}
