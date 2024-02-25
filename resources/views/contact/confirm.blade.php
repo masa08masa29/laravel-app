@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <title>入力内容の確認</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
+@section('title', '入力内容の確認')
 
-<body>
+@section('content')
+
     <div class="container">
             <div class="contact">
                 <h1>お問い合わせフォーム</h1>
@@ -62,9 +58,7 @@
                 </div>
             </form>
             
-
         </div>
     </div>
-</body>
 
-</html>
+@endsection

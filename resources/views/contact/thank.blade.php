@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <title>送信完了</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
+@section('title', '送信完了')
 
-<body>
+@section('content')
+
     <div class="container">
         <div class="contact">
             <h1>お問い合わせフォーム</h1>
@@ -29,6 +25,5 @@
 
         </div>
     </div>
-</body>
 
-</html>
+@endsection

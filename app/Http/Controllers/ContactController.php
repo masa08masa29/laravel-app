@@ -24,10 +24,10 @@ class ContactController extends Controller
     public function confirm(Request $request){
 
         $validation_rules =[
-            'name' =>'required',
+            'name' =>'required|max:50',
             'mail' =>'required|email',
             'mail_confirmation' =>'required|email|same:mail',
-            'title' =>'required',
+            'title' =>'required|max:50',
             'content' =>'required',
         ];
 
