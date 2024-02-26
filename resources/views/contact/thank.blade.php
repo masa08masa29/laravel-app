@@ -8,7 +8,7 @@
         <div class="contact">
             <h1>お問い合わせフォーム</h1>
             <div class="step">
-                <div class="step_nocurrent">お問い合わせ内容の確認</div>
+                <div class="step_nocurrent">お問い合わせ内容の入力</div>
                 <div class="step_nocurrent">入力内容の確認</div>
                 <div class="step_current">送信完了</div>
             </div>

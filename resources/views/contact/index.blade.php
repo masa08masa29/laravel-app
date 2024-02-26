@@ -8,7 +8,7 @@
         <div class="contact">
             <h1>お問い合わせフォーム</h1>
             <div class="step">
-                <div class="step_current">お問い合わせ内容の確認</div>
+                <div class="step_current">お問い合わせ内容の入力</div>
                 <div class="step_nocurrent">入力内容の確認</div>
                 <div class="step_nocurrent">送信完了</div>
             </div>
@@ -19,7 +19,9 @@
                     <table>
                         <tbody>
                             <tr class="form_line">
-                                <th class="form_item">名前<br></th>
+                                <th class="form_item">お名前<br>
+                                    <span class="required">必須</span>
+                                </th>
                                 <td class="form_input">
                                 <input type="text" name="name" value="{{ old('name') }}" placeholder="名前を入力してください">
                                 </td>
@@ -31,7 +33,9 @@
                             </div>
 
                             <tr class="form_line">
-                                <th class="form_item">メールアドレス</th>
+                                <th class="form_item">メールアドレス<br>
+                                    <span class="required">必須</span>
+                                </th>
                                 <td class="form_input">
                                     <input type="email" name="mail" value="{{ old('mail') }}" placeholder="メールアドレスを入力してください">
                                 </td>
@@ -43,7 +47,9 @@
                             </div>
 
                             <tr class="form_line">
-                                <th class="form_item">メールアドレス<br>（確認用）</th>
+                                <th class="form_item">メールアドレス(確認用)<br>
+                                    <span class="required">必須</span>
+                                </th>
                                 <td class="form_input">
                                     <input type="email" name="mail_confirmation" value="{{ old('mail_confirmation') }}" placeholder="もう一度メールアドレスを入力してください">
                                 </td>
@@ -55,7 +61,9 @@
                             </div>
 
                             <tr class="form_line">
-                                <th class="form_item">タイトル</th>
+                                <th class="form_item">タイトル<br>
+                                    <span class="required">必須</span>
+                                </th>
                                 <td class="form_input">
                                     <input type="text" name="title" value="{{ old('title') }}" placeholder="タイトルを入力してください">
                                 </td>
@@ -67,7 +75,9 @@
                             </div>
 
                             <tr class="form_line">
-                                <th class="form_item">お問い合わせ内容</th>
+                                <th class="form_item">お問い合わせ内容<br>
+                                    <span class="required">必須</span>
+                                </th>
                                 <td class="form_input">
                                     <textarea name="content" value="{{ old('content') }}" placeholder="お問い合わせ内容を入力してください"></textarea>
                                 </td>

@@ -1,4 +1,8 @@
-
+/******************************************************************
+  お問い合わせ入力ページ
+　お問い合わせ確認ページ             
+　お問い合わせ送信完了ページ
+*******************************************************************/
 .contact h1{
     text-align: center;
 }
@@ -7,6 +11,7 @@
     margin:0 30%;
     display:flex;
     justify-content: space-around;
+    text-align: center;
 }
 
 .step_current {
@@ -14,14 +19,28 @@
     font-weight: bold;
     background-color: #3eb6fc;
     padding:10px;
+    flex: 1;
+    display: flex;
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    border: 1px solid #000;
 }
 
 .step_nocurrent {
     color: #fff;
     background-color: #a9a9a9;
     padding:10px;
-  }
+    flex: 1;
+    display: flex;
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    border: 1px solid #000;
+}
 
+/******************************************************************
+  お問い合わせ入力ページ
+　お問い合わせ確認ページ             
+*******************************************************************/
 .form_line {
 	display: flex;
 	flex-wrap: wrap;
@@ -49,28 +68,27 @@
     font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
-    text-align: center; /* ボタン内のテキストを中央揃えにする */
+    text-align: center; 
 }
 
 .table_container {
-    margin: 0 auto; /* 中央に寄せる */
-    width: 50%; /* テーブルの幅 */
+    margin: 0 auto; 
+    width: 50%;
     margin-top: 50px;
 }
-
 
 .form_line input{
     width:350px;
     height: 10px;
     padding:15px;
-    border: 1.5px solid #ccc; /* 枠の線の太さと色を指定 */
+    border: 1.5px solid #ccc; 
 }
 
 textarea {
-	width: 350px;  /* 横幅 */
-	height: 300px; /* 高さ */
+	width: 350px;  
+	height: 300px; 
     padding:15px;
-    border: 1.5px solid #ccc; /* 枠の線の太さと色を指定 */
+    border: 1.5px solid #ccc; 
 }
 
 /* inputとtextareaのフォントを同じにする */
@@ -78,7 +96,9 @@ input[type="text"],
 input[type="email"],
 textarea {
     font-family: 'Arial', sans-serif; /* フォント */
-    margin-bottom: 20px;
+    font-size: 16px;
+    margin-bottom: 30px;
+    background-color: #ddd;
 
 }
 
@@ -87,16 +107,52 @@ input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 textarea::placeholder {
     font-family: 'Arial', sans-serif; /* フォント */
-    font-size: 15px; /* フォントサイズ */
+    font-size: 16px; /* フォントサイズ */
     color: #999; /* プレースホルダーの文字色 */  
 }
 
-.detail-item {
-    border: 1.5px solid #ccc; /* 各項目の枠 */
-    padding: 10px;
-    margin-bottom: 10px;
+.form_item{
+    margin-bottom: 35px;
 }
 
+.required{
+    background-color: red;
+    color:white;
+    padding:2px;
+    right: 10px;
+}
+
+/******************************************************************
+  お問い合わせ入力ページ           
+*******************************************************************/
+.error-message {
+    color: red;
+    font-weight: bold;
+    list-style-type: none;
+}
+
+.management_link{
+    text-align: center;
+}
+
+/******************************************************************
+　お問い合わせ確認ページ             
+*******************************************************************/
+.name_form,
+.mail_form,
+.title_form,
+.content_form {
+    border: 1.5px solid #ccc;
+    padding: 8px;
+    width:350px;
+    height: auto;
+    word-wrap: break-word; /* テキストを折り返して表示 */
+    background-color: #ddd;
+}
+
+/******************************************************************          
+　お問い合わせ送信完了ページ
+*******************************************************************/
 .thank{
     text-align: center;
 }
@@ -105,65 +161,40 @@ textarea::placeholder {
     margin-top: 20px;
 }
 
-.error-message {
-    color: red;
-    font-weight: bold;
+.contact_link{
+    text-align: center;
+    margin-top: 30px;
 }
 
+/******************************************************************
+  お問い合わせ一覧ページ
+*******************************************************************/
 .contact-table {
     width: 100%;
     border-collapse: collapse;
-  }
+}
 
 .contact-table th {
     padding: 10px;
     text-align: left;
     background-color: #f2f2f2;
     border-bottom: 1px solid #ddd;
-  }
+}
 
   /* テーブルデータ行のスタイル（奇数行） */
 .contact-table tr:nth-child(odd) {
     background-color: #fff;
-  }
+}
   
   /* テーブルデータ行のスタイル（偶数行） */
 .contact-table tr:nth-child(even) {
     background-color: #cbc8c8;
-  }
+}
   
   /* テーブルセルのスタイル */
 .contact-table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
-  }
-
-.contact_link{
-    text-align: center;
-    margin-top: 30px;
-  }
-
-.management_link{
-    text-align: center;
-  }
-
-.btn btn-detail{
-    background-color: aqua;
-  }
-
-.contact_detail_container{
-    width: 80%; /* コンテンツの幅を指定 */
-    margin: 0 auto; /* 中央寄せにする場合 */
-  }
-
-.contact_detail ul {
-    list-style-type: none; /* 箇条書きリストのマーカーを削除 */
-    
-}
-.contact_detail ul li {
-    margin-bottom: 10px; /* 各項目の下に余白を設定 */
-    word-wrap: break-word; /* 長い単語を折り返す */
-    white-space: pre-wrap; /* テキストの改行を維持 */
 }
 
 .pagination{
@@ -176,22 +207,47 @@ textarea::placeholder {
     margin-right: 50px
 }
 
-
-.name_form,
-.mail_form,
-.title_form,
-.content_form {
-    border: 2px solid #ccc;
-    padding: 8px;
-    width:350px;
-    height: auto;
-    word-wrap: break-word; /* テキストを折り返して表示 */
+/******************************************************************
+  お問い合わせ詳細ページ
+*******************************************************************/
+.detail-item {
+    border: 1.5px solid #ccc; /* 各項目の枠 */
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
-.form_item{
-    margin-top: 10px;
+.btn btn-detail{
+    background-color: aqua;
+}
+
+.contact_detail_container{
+    width: 80%; /* コンテンツの幅を指定 */
+    margin: 0 auto; /* 中央寄せにする場合 */
+}
+
+.contact_detail ul {
+    list-style-type: none; /* 箇条書きリストのマーカーを削除 */
+    
+}
+
+.contact_detail ul li {
+    margin-bottom: 10px; /* 各項目の下に余白を設定 */
+    word-wrap: break-word; /* 長い単語を折り返す */
+    white-space: pre-wrap; /* テキストの改行を維持 */
 }
 
 .contact_detail h1{
     text-align: center;
 }
+
+/******************************************************************
+*******************************************************************/
+
+
+
+
+
+
+
+
+
