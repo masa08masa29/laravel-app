@@ -95,7 +95,7 @@ textarea {
 input[type="text"],
 input[type="email"],
 textarea {
-    font-family: 'Arial', sans-serif; /* フォント */
+    font-family: 'Arial', sans-serif;
     font-size: 16px;
     margin-bottom: 30px;
     background-color: #ddd;
@@ -106,9 +106,9 @@ textarea {
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 textarea::placeholder {
-    font-family: 'Arial', sans-serif; /* フォント */
-    font-size: 16px; /* フォントサイズ */
-    color: #999; /* プレースホルダーの文字色 */  
+    font-family: 'Arial', sans-serif;
+    font-size: 16px; 
+    color: #999; 
 }
 
 .form_item{
@@ -132,7 +132,7 @@ textarea::placeholder {
 }
 
 .management_link{
-    text-align: center;
+    text-align: right;
 }
 
 /******************************************************************
@@ -221,7 +221,7 @@ textarea::placeholder {
   お問い合わせ詳細ページ
 *******************************************************************/
 .detail-item {
-    border: 1.5px solid #ccc; /* 各項目の枠 */
+    border: 1.5px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
 }
@@ -231,17 +231,17 @@ textarea::placeholder {
 }
 
 .contact_detail_container{
-    width: 80%; /* コンテンツの幅を指定 */
-    margin: 0 auto; /* 中央寄せにする場合 */
+    width: 80%;
+    margin: 0 auto;
 }
 
 .contact_detail ul {
-    list-style-type: none; /* 箇条書きリストのマーカーを削除 */
+    list-style-type: none;
     
 }
 
 .contact_detail ul li {
-    margin-bottom: 10px; /* 各項目の下に余白を設定 */
+    margin-bottom: 10px;
     word-wrap: break-word; /* 長い単語を折り返す */
     white-space: pre-wrap; /* テキストの改行を維持 */
 }

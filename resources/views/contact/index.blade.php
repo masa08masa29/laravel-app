@@ -7,6 +7,7 @@
     <div class="container">
         <div class="contact">
             <h1>お問い合わせフォーム</h1>
+
             <div class="step">
                 <div class="step_current">お問い合わせ内容の入力</div>
                 <div class="step_nocurrent">入力内容の確認</div>
@@ -93,9 +94,9 @@
                     <div class="button">
                         <input class="submit-btn" type="submit" value="送信する">
                     </div>
-
+                    
                     <div class="management_link">
-                        <a href="/contact/list">管理画面</a>
+                        <a href="{{ Auth::check() ? route('contact.list') : 'http://localhost' }}">管理画面</a>                                  
                     </div>
                 </div>
             </form>
