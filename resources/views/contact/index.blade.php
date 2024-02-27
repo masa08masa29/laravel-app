@@ -96,7 +96,7 @@
 
                     <div class="management_link">
                         <a href="/contact/list">管理画面</a>
-                      </div>
+                    </div>
                 </div>
             </form>
 

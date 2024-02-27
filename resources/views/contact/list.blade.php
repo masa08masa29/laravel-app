@@ -34,7 +34,7 @@
                     <form action="{{ route('contact.destroy', ['id'=>$contact->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn-danger">削除</button>
+                        <button type="submit" class="btn-danger" onclick='return confirm("本当に削除しますか？")'>削除</button>
                     </form>
                   </td>
                 

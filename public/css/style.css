@@ -207,6 +207,16 @@ textarea::placeholder {
     margin-right: 50px
 }
 
+.btn-detail{
+    background-color: rgb(98, 217, 98);
+    color:white;
+}
+
+.btn-danger{
+    background-color: rgb(234, 70, 70);
+    color:white;
+}
+
 /******************************************************************
   お問い合わせ詳細ページ
 *******************************************************************/
