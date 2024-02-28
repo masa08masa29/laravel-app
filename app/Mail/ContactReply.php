@@ -11,13 +11,16 @@ class ContactReply extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data; // 受け取るデータを格納するプロパティ
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
+        $this->data = $data;
         //
     }
 
@@ -30,6 +33,6 @@ class ContactReply extends Mailable
     {
         //以下追記
         return $this->view('emails.text')
-                    ->subject('メールの標題');
+                    ->subject('お問い合わせありがとうございます');
     }
 }
