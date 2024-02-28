@@ -50,12 +50,29 @@ class ContactController extends Controller
         return view('contact.thank',$data);
     }
 
-    public function list(){
+    public function list(Request $request)
+{
+    $keyword = $request->input('keyword');
+    $search_type = $request->input('search_type');
 
-        $contact_list = $this->contact_repository->getContactList(); 
+    $query = Contact::query();
 
-        return view('contact.list',['contact_list' =>$contact_list]);
+    if (!empty($keyword)) {
+        if ($search_type === 'name') {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        } elseif ($search_type === 'content') {
+            $query->where('content', 'like', '%' . $keyword . '%');
+        }
     }
+
+    $contact_list = $query->orderBy('id', 'desc')->paginate(10);
+
+    return view('contact.list', [
+        'contact_list' => $contact_list,
+        'keyword' => $keyword,
+        'search_type' => $search_type,
+    ]);
+}
 
     public function detail($id)
     {
