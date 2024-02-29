@@ -252,8 +252,34 @@ textarea::placeholder {
 
 /******************************************************************
 *******************************************************************/
-
-
+.radio-container {
+    display: flex;
+  }
+  
+  .radio-container input[type="radio"] {
+    display: none;
+  }
+  
+  .radio-container label {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: -15px;
+    margin-left: 10px;
+  }
+  
+  .radio-container label:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .radio-container input[type="radio"]:checked + label {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
 
 
 

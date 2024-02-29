@@ -7,6 +7,25 @@
     <div class="container">
         <div class="contact">
             <h1>お問い合わせ一覧</h1>
+
+            <div class="items_per_page">
+                <p>表示件数</p>
+
+                <div class="radio-container">
+                    <input type="radio" name="limit" id="limit1" value="5" onchange="changeDisplayLimit()"
+                        @if (request()->query('limit') ?? 5 == 5) checked="checked" @endif>
+                    <label for="limit1">5件</label>
+
+                    <input type="radio" name="limit" id="limit2" value="10" onchange="changeDisplayLimit()"
+                        @if (request()->query('limit') == 10) checked="checked" @endif>
+                    <label for="limit2">10件</label>
+
+                    <input type="radio" name="limit" id="limit3" value="15" onchange="changeDisplayLimit()"
+                        @if (request()->query('limit') == 15) checked="checked" @endif>
+                    <label for="limit3">15件</label>
+                </div>
+                    
+            </div>
             
             <table class="contact-table">
                 <tr>
