@@ -10,12 +10,12 @@
             
             <table class="contact-table">
                 <tr>
-                  <th>日付</th>
-                  <th>お名前</th>
-                  <th>メールアドレス</th>
-                  <th>タイトル</th>
-                  <th>詳細</th>
-                  <th>削除</th>
+                    <th>@sortablelink('created_at', '日付')</th>
+                    <th>お名前</th>
+                    <th>メールアドレス</th>
+                    <th>タイトル</th>
+                    <th>詳細</th>
+                    <th>削除</th>
                 </tr>
           
                 @foreach($contact_list as $contact)

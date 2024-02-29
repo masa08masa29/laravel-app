@@ -50,11 +50,18 @@ class ContactController extends Controller
         return view('contact.thank',$data);
     }
 
-    public function list(){
+    public function list(Request $request)
+    {
+        $query = Contact::sortable();
 
-        $contact_list = $this->contact_repository->getContactList(); 
+        // ソートパラメーターを取得し、ソートを適用する
+        if ($request->has('sort') && $request->has('direction')) {
+            $query->orderBy($request->input('sort'), $request->input('direction'));
+        }
 
-        return view('contact.list',['contact_list' =>$contact_list]);
+        $contact_list = $query->paginate(10);
+
+        return view('contact.list', compact('contact_list'));
     }
 
     public function detail($id)
