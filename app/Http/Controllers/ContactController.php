@@ -24,10 +24,10 @@ class ContactController extends Controller
     public function confirm(Request $request){
 
         $validation_rules =[
-            'name' =>'required|max:50',
+            'name' =>'required',
             'mail' =>'required|email',
             'mail_confirmation' =>'required|email|same:mail',
-            'title' =>'required|max:50',
+            'title' =>'required',
             'content' =>'required',
         ];
 
@@ -41,7 +41,6 @@ class ContactController extends Controller
     public function send(Request $request){
 
         $data =$request->only(['name']);
-        //dd($data);
 
         $attributes = $request->only(['name','mail','content','title']);
 
@@ -50,9 +49,11 @@ class ContactController extends Controller
         return view('contact.thank',$data);
     }
 
-    public function list(){
+    public function list(Request $request){
 
-        $contact_list = $this->contact_repository->getContactList(); 
+        $limit = $request->query('limit', 10);
+
+        $contact_list = $this->contact_repository->getContactList($limit); 
 
         return view('contact.list',['contact_list' =>$contact_list]);
     }
@@ -63,7 +64,6 @@ class ContactController extends Controller
 
         return view('contact.detail', ['contact_detail' => $contact_detail]);
     }
-    
     
     public function destroy($id)
     {

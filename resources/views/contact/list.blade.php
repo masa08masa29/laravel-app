@@ -12,18 +12,18 @@
                 <p>表示件数</p>
 
                 <div class="radio-container">
-                    <input type="radio" name="limit" id="limit1" value="5" onchange="changeDisplayLimit()"
-                        @if (request()->query('limit') ?? 5 == 5) checked="checked" @endif>
-                    <label for="limit1">5件</label>
+                  <input type="radio" name="limit" id="limit1" value="5" onchange="changeDisplayLimit()"
+                      {{ (request()->query('limit') ?? 10) == 5 ? 'checked' : '' }}>
+                  <label for="limit1">5件</label>
 
-                    <input type="radio" name="limit" id="limit2" value="10" onchange="changeDisplayLimit()"
-                        @if (request()->query('limit') == 10) checked="checked" @endif>
-                    <label for="limit2">10件</label>
+                  <input type="radio" name="limit" id="limit2" value="10" onchange="changeDisplayLimit()"
+                      {{ (request()->query('limit') ?? 10) == 10 ? 'checked' : '' }}>
+                  <label for="limit2">10件</label>
 
-                    <input type="radio" name="limit" id="limit3" value="15" onchange="changeDisplayLimit()"
-                        @if (request()->query('limit') == 15) checked="checked" @endif>
-                    <label for="limit3">15件</label>
-                </div>
+                  <input type="radio" name="limit" id="limit3" value="15" onchange="changeDisplayLimit()"
+                      {{ (request()->query('limit') ?? 10) == 15 ? 'checked' : '' }}>
+                  <label for="limit3">15件</label>
+              </div>
                     
             </div>
             
@@ -59,13 +59,21 @@
                 
                 </tr>
                 @endforeach
-              </table>
-              {{ $contact_list->links('pagination::simple-bootstrap-4') }}
+            </table>
+            
+            {{ $contact_list->appends(['limit' => request()->query('limit')])->links('pagination::bootstrap-4') }}
 
               <div class="contact_link">
                 <a href="/contact">お問い合わせフォームに戻る</a>
               </div>
         </div>
     </div>
+
+    <script>
+      function changeDisplayLimit() {
+          var limit = document.querySelector('input[name="limit"]:checked').value;
+          window.location.href = "{{ route('contact.list') }}?limit=" + limit;
+      }
+    </script>
 
 @endsection
