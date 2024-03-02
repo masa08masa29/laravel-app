@@ -8,27 +8,26 @@
         <div class="contact_list">
             <h1>お問い合わせ一覧</h1>
 
-            <div class="items_per_page">
-                <p>表示件数</p>
+            <div class="filter-wrapper">
+                <div class="items_per_page">
+                    <p>表示件数</p>
+                    <div class="radio-container">
+                      <input type="radio" name="limit" id="limit1" value="5" onchange="changeDisplayLimit()"
+                          {{ (request()->query('limit') ?? 10) == 5 ? 'checked' : '' }}>
+                      <label for="limit1">5件</label>
 
-                <div class="radio-container">
-                  <input type="radio" name="limit" id="limit1" value="5" onchange="changeDisplayLimit()"
-                      {{ (request()->query('limit') ?? 10) == 5 ? 'checked' : '' }}>
-                  <label for="limit1">5件</label>
+                      <input type="radio" name="limit" id="limit2" value="10" onchange="changeDisplayLimit()"
+                          {{ (request()->query('limit') ?? 10) == 10 ? 'checked' : '' }}>
+                      <label for="limit2">10件</label>
 
-                  <input type="radio" name="limit" id="limit2" value="10" onchange="changeDisplayLimit()"
-                      {{ (request()->query('limit') ?? 10) == 10 ? 'checked' : '' }}>
-                  <label for="limit2">10件</label>
-
-                  <input type="radio" name="limit" id="limit3" value="15" onchange="changeDisplayLimit()"
-                      {{ (request()->query('limit') ?? 10) == 15 ? 'checked' : '' }}>
-                  <label for="limit3">15件</label>
-              </div>
-                    
-            </div>
-
+                      <input type="radio" name="limit" id="limit3" value="15" onchange="changeDisplayLimit()"
+                          {{ (request()->query('limit') ?? 10) == 15 ? 'checked' : '' }}>
+                      <label for="limit3">15件</label>
+                    </div>                   
+                </div>
+            
                 <div class="contact_search">
-                    <form action="{{ route('contact.list') }}" method="get">
+                    <form action="{{ route('contact.list') }}" method="get" onsubmit="event.preventDefault(); searchContacts();">
                         <div class="search-wrapper">
                             <select name="search_type">
                                 <option value="name" @if($search_type == 'name') selected @endif>名前</option>
@@ -40,6 +39,7 @@
                     <input type="submit" value="検索">
                     </form>
                 </div>
+            </div>
             
                 <table class="contact-table">
                     <tr>
@@ -88,6 +88,24 @@
       function changeDisplayLimit() {
           var limit = document.querySelector('input[name="limit"]:checked').value;
           window.location.href = "{{ route('contact.list') }}?limit=" + limit;
+      }
+    </script>
+
+    <script>
+      function changeDisplayLimit() {
+          var limit = document.querySelector('input[name="limit"]:checked').value;
+          var searchType = document.querySelector('select[name="search_type"]').value;
+          var keyword = document.querySelector('input[name="keyword"]').value;
+          window.location.href = "{{ route('contact.list') }}?limit=" + limit + "&search_type=" + searchType + "&keyword=" + keyword;
+      }
+    </script>
+
+    <script>
+      function searchContacts() {
+          var limit = document.querySelector('input[name="limit"]:checked').value;
+          var searchType = document.querySelector('select[name="search_type"]').value;
+          var keyword = document.querySelector('input[name="keyword"]').value;
+          window.location.href = "{{ route('contact.list') }}?limit=" + limit + "&search_type=" + searchType + "&keyword=" + keyword;
       }
     </script>
 

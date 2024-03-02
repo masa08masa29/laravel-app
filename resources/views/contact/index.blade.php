@@ -80,7 +80,7 @@
                                     <span class="required">必須</span>
                                 </th>
                                 <td class="form_input">
-                                    <textarea name="content" value="{{ old('content') }}" placeholder="お問い合わせ内容を入力してください"></textarea>
+                                    <textarea name="content" placeholder="お問い合わせ内容を入力してください">{{ old('content') }}</textarea>
                                 </td>
                             </tr>
                             <div class="error-message">

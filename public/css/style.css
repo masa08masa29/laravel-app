@@ -5,6 +5,7 @@
 *******************************************************************/
 .contact h1{
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .step{
@@ -12,6 +13,7 @@
     display:flex;
     justify-content: space-around;
     text-align: center;
+    width:50%;
 }
 
 .step_current {
@@ -77,14 +79,14 @@
     width:350px;
     height: 10px;
     padding:15px;
-    border: 1.5px solid #ccc; 
+    border: 1px solid #ccc; 
 }
 
 textarea {
 	width: 350px;  
 	height: 300px; 
     padding:15px;
-    border: 1.5px solid #ccc; 
+    border: 1px solid #ccc; 
 }
 
 /* inputとtextareaのフォントを同じにする */
@@ -114,8 +116,9 @@ textarea::placeholder {
 .required{
     background-color: red;
     color:white;
-    padding:2px;
-    right: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #000;
 }
 
 /******************************************************************
@@ -129,21 +132,28 @@ textarea::placeholder {
 
 .management_link{
     text-align: right;
+    margin-left: 50px;
 }
 
 /******************************************************************
 　お問い合わせ確認ページ             
 *******************************************************************/
-.name_form,
-.mail_form,
-.title_form,
-.content_form {
-    border: 1.5px solid #ccc;
-    padding: 8px;
-    width:350px;
-    height: auto;
-    word-wrap: break-word; /* テキストを折り返して表示 */
-    background-color: #ddd;
+.confirm {
+    width: 50%;
+    margin: 0 auto;
+    }
+
+.confirm th,
+.confirm td {
+border: 1px solid #ccc;
+padding: 20px;
+word-break: break-all;
+}
+
+.confirm th {
+font-weight: bold;
+background-color: #dedede;
+width:30%; 
 }
 
 /******************************************************************          
@@ -177,17 +187,17 @@ textarea::placeholder {
     border-bottom: 1px solid #ddd;
 }
 
-  /* テーブルデータ行のスタイル（奇数行） */
+/* テーブルデータ行のスタイル（奇数行） */
 .contact-table tr:nth-child(odd) {
     background-color: #fff;
 }
   
-  /* テーブルデータ行のスタイル（偶数行） */
+/* テーブルデータ行のスタイル（偶数行） */
 .contact-table tr:nth-child(even) {
-    background-color: #cbc8c8;
+    background-color: #ddd;
 }
   
-  /* テーブルセルのスタイル */
+/* テーブルセルのスタイル */
 .contact-table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
@@ -206,44 +216,50 @@ textarea::placeholder {
 .btn-detail{
     background-color: rgb(8, 134, 8);
     color:white;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #000;
+    padding:5px;
 }
 
 .btn-danger{
     background-color: rgb(234, 70, 70);
     color:white;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #000;
+    padding:5px;
 }
 
 /******************************************************************
   お問い合わせ詳細ページ
 *******************************************************************/
-.detail-item {
-    border: 1.5px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.btn btn-detail{
-    background-color: aqua;
-}
-
-.contact_detail_container{
+.detail_container{
     width: 80%;
     margin: 0 auto;
 }
 
-.contact_detail ul {
-    list-style-type: none;
-    
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000;
+    margin: 0 auto;
 }
 
-.contact_detail ul li {
-    margin-bottom: 10px;
-    word-wrap: break-word; /* 長い単語を折り返す */
-    white-space: pre-wrap; /* テキストの改行を維持 */
+/* テーブルデータ行のスタイル（奇数行） */
+.detail-table tr:nth-child(odd) {
+    background-color: #fff;
 }
 
-.contact_detail h1{
-    text-align: center;
+/* テーブルデータ行のスタイル（偶数行） */
+.detail-table tr:nth-child(even) {
+    background-color: #ddd;
+}
+  
+/* テーブルセルのスタイル */
+.detail-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
 }
 
 /******************************************************************
@@ -254,11 +270,11 @@ textarea::placeholder {
     display: flex;
   }
   
-  .radio-container input[type="radio"] {
+.radio-container input[type="radio"] {
     display: none;
   }
   
-  .radio-container label {
+.radio-container label {
     display: inline-block;
     padding: 5px 10px;
     border: 1px solid #000;
@@ -267,35 +283,79 @@ textarea::placeholder {
     margin-bottom: 10px;
     margin-top: -15px;
     margin-left: 10px;
-  }
+    padding:5px;
+}
   
-  .radio-container label:hover {
+.radio-container label:hover {
     background-color: #f0f0f0;
-  }
+}
   
-  .radio-container input[type="radio"]:checked + label {
+.radio-container input[type="radio"]:checked + label {
     background-color: #007bff;
     color: #fff;
-  }
+}
+
+
+
+
+
 
 .search-wrapper {
     display: flex;
     align-items: center;
 }
 
-.search-type {
-    margin-right: 15px; /* プルダウンメニューとラベルの間の間隔 */
+.filter-wrapper{
+    display:flex;
+    margin-top: -30px;
+}
+
+.contact_search{
+    margin-left: 40px;
+    margin-top: 17px;
+}
+
+.contact_search form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.search-wrapper select {
+    padding: 7px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: -5px;
+    
 }
 
 .search-label {
-    font-size: 14px; /* ラベルのフォントサイズ */
-    color: #333; /* ラベルのテキスト色 */
+    margin-right: 10px;
+    padding: 9px;
+    font-size: 16px;
+    padding-right: 10px;
+    width: 60px;
 }
 
+.contact_search input[type="text"] {
+    margin-top: 25px;
+    border: 1px solid #000;
+    padding:7px;
+    border-radius: 5px;
+}
 
+.contact_search input[type="submit"]{
+    margin-left:20px;
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 16px;
+    padding:5px;
+    margin-top: -5px;
+}
 
-
-
-
-
+body {
+    font-family: 'Roboto', sans-serif;
+}
 

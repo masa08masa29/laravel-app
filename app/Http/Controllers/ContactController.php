@@ -24,7 +24,7 @@ class ContactController extends Controller
     public function confirm(Request $request){
 
         $validation_rules =[
-            'name' =>'required',
+            'name' =>'required|max:30',
             'mail' =>'required|email',
             'mail_confirmation' =>'required|email|same:mail',
             'title' =>'required',
@@ -38,15 +38,9 @@ class ContactController extends Controller
         return view('contact.confirm',$data);
     }
 
-    public function send(Request $request){
+    public function send(){
 
-        $data =$request->only(['name']);
-
-        $attributes = $request->only(['name','mail','content','title']);
-
-        Contact::create($attributes);
-
-        return view('contact.thank',$data);
+        return view('contact.thank');
     }
 
     public function list(Request $request)
@@ -55,7 +49,6 @@ class ContactController extends Controller
     $search_type = $request->input('search_type');
   
     $limit = $request->query('limit', 10);
-    $contact_list = $this->contact_repository->getContactList($limit); 
     $query = Contact::query();
 
     if (!empty($keyword)) {
@@ -66,7 +59,7 @@ class ContactController extends Controller
         }
     }
 
-    $contact_list = $query->orderBy('id', 'desc')->paginate(10);
+    $contact_list = $query->orderBy('id', 'desc')->paginate($limit);
 
     return view('contact.list', [
         'contact_list' => $contact_list,
