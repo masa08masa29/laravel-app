@@ -247,7 +247,9 @@ textarea::placeholder {
 }
 
 /******************************************************************
+検索機能
 *******************************************************************/
+
 .radio-container {
     display: flex;
   }
@@ -275,7 +277,21 @@ textarea::placeholder {
     background-color: #007bff;
     color: #fff;
   }
-  
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.search-type {
+    margin-right: 15px; /* プルダウンメニューとラベルの間の間隔 */
+}
+
+.search-label {
+    font-size: 14px; /* ラベルのフォントサイズ */
+    color: #333; /* ラベルのテキスト色 */
+}
+
 
 
 
