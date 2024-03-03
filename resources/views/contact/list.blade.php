@@ -8,6 +8,8 @@
         <div class="contact_list">
             <h1>お問い合わせ一覧</h1>
 
+            <h3 id="contact_count">お問い合わせ件数: {{ $contact_list->total() }}件</h2>
+
             <div class="filter-wrapper">
                 <div class="items_per_page">
                     <p>表示件数</p>
@@ -39,12 +41,15 @@
                     <input type="submit" value="検索">
                     </form>
                 </div>
+                
+                <form class="clear"><button id=clear class="clear-button">フィルタをクリア</button></form>
+                    
             </div>
             
                 <table class="contact-table">
                     <tr>
                     <th>日付</th>
-                    <th>お名前</th>
+                    <th>名前</th>
                     <th>メールアドレス</th>
                     <th>タイトル</th>
                     <th>詳細</th>
@@ -107,6 +112,14 @@
           var keyword = document.querySelector('input[name="keyword"]').value;
           window.location.href = "{{ route('contact.list') }}?limit=" + limit + "&search_type=" + searchType + "&keyword=" + keyword;
       }
+    </script>
+
+    <script>
+      var clear = document.getElementById('clear')
+      clear.addEventListener('click', function(event) {
+          const url = new URL(location);
+          history.replaceState('', '', url.pathname);
+      });
     </script>
 
 @endsection
