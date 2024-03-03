@@ -72,6 +72,10 @@ class ContactController extends Controller
     {
         $contact_detail = $this->contact_repository->getContactDetail($id);
 
+        if (!$contact_detail) {
+            abort(404); 
+        }
+
         return view('contact.detail', ['contact_detail' => $contact_detail]);
     }
     
