@@ -17,6 +17,7 @@
                 <p>
                     受付が完了しました。<br>
                     {{$name}}さん、ありがとうございました。
+                    ありがとうございました。
                 </p>
                 <div class="contact_link">
                     <a href="/contact">お問い合わせフォームに戻る</a>

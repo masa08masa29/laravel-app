@@ -15,44 +15,39 @@
             
             <form action="{{ route('contact.send') }}" method="post">
             @csrf    
-                <div class="table_container">
-                    <table>
-                        <tbody>
-                            <tr class="form_line">
-                                <th class="form_item">名前<br></th>
-                                <td class="name_form">
-                                    <input type="hidden" name="name" value="{{$name}}">
-                                    {{$name}}
-                                </td>
-                            </tr>
-
-                            <tr class="form_line">
-                                <th class="form_item">メールアドレス</th>
-                                <td class="mail_form">
-                                    <input type="hidden" name="mail" value="{{$mail}}">
-                                    {{$mail}}
-                                </td>
-                            </tr>
-
-                            <tr class="form_line">
-                                <th class="form_item">タイトル<br></th>
-                                <td class="title_form">
-                                    <input type="hidden" name="title" value="{{$title}}">
-                                    {{$name}}
-                                </td>
-                            </tr>
-
-                            <tr class="form_line">
-                                <th class="form">お問い合わせ内容</th>
-                                <td class="content_form">
-                                    <input type="hidden" name="content" value="{{$content}}">
-                                    {{$content}}
-                                </td>
-                            </tr>
-
-                        </tbody>
+                <div class="confirm_container">
+                    <table class="confirm">
+                        <tr>
+                            <th>お名前</th>
+                            <td class="name">
+                                <input type="hidden" name="name" value="{{$name}}">
+                                {{$name}}
+                            </td>
+                        </tr>
+                        <tr>
+                        <th>メールアドレス</th>
+                            <td class="mail">
+                                <input type="hidden" name="mail" value="{{$mail}}">
+                                {{$mail}}
+                            </td>
+                        </tr>
+                        <tr>
+                        <th>タイトル</th>
+                            <td class="title">
+                                <input type="hidden" name="title" value="{{$title}}">
+                                {{$title}}
+                            </td>
+                        </tr>
+                        <tr>
+                        <th>お問い合わせ内容</th>
+                            <td class="content">
+                                <input type="hidden" name="content" value="{{$content}}">
+                                {{$content}}
+                            </td>
+                        </tr>
                     </table>
                 </div>
+                
                 <div class="button">
                     <input class="submit-btn" type="submit" value="入力内容を送信する">
                 </div>
@@ -60,5 +55,5 @@
             
         </div>
     </div>
-
+    
 @endsection

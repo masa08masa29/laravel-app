@@ -5,12 +5,11 @@ namespace App\Repositories;
 use App\Models\Contact;
 use Illuminate\Support\Facades\DB;
 
-
 class ContactRepository
 {
-    public function getContactList(){
+    public function getContactList($limit){
 
-        return Contact::latest()->paginate(10);
+        return Contact::latest()->paginate($limit);
     }
 
     public function getContactDetail($id){
@@ -22,7 +21,6 @@ class ContactRepository
       
         return Contact::find($id);
     }
-
 }
 
 

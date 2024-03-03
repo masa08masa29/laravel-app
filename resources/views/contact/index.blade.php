@@ -18,86 +18,88 @@
                 @csrf
                 <div class="table_container">
                     <table>
-                        <tbody>
-                            <tr class="form_line">
-                                <th class="form_item">お名前<br>
-                                    <span class="required">必須</span>
-                                </th>
-                                <td class="form_input">
+                        <tr class="form_line">
+                            <th class="form_item">お名前<br>
+                                <span class="required">必須</span>
+                            </th>
+                            <td class="form_input">
+                                <div class="error-message">
+                                    @error('name')
+                                    <li>{{$message}}</li>
+                                    @enderror
+                                </div>
                                 <input type="text" name="name" value="{{ old('name') }}" placeholder="名前を入力してください">
-                                </td>
-                            </tr>
-                            <div class="error-message">
-                                @error('name')
-                                <li>{{$message}}</li>
-                                @enderror
-                            </div>
-
-                            <tr class="form_line">
-                                <th class="form_item">メールアドレス<br>
-                                    <span class="required">必須</span>
-                                </th>
-                                <td class="form_input">
-                                    <input type="email" name="mail" value="{{ old('mail') }}" placeholder="メールアドレスを入力してください">
-                                </td>
-                            </tr>
-                            <div class="error-message">
-                                @error('mail')
-                                <li>{{$message}}</li>
-                                @enderror
-                            </div>
-
-                            <tr class="form_line">
-                                <th class="form_item">メールアドレス(確認用)<br>
-                                    <span class="required">必須</span>
-                                </th>
-                                <td class="form_input">
-                                    <input type="email" name="mail_confirmation" value="{{ old('mail_confirmation') }}" placeholder="もう一度メールアドレスを入力してください">
-                                </td>
-                            </tr>
-                            <div class="error-message">
-                                @error('mail_confirmation')
-                                <li>{{$message}}</li>
-                                @enderror
-                            </div>
-
-                            <tr class="form_line">
-                                <th class="form_item">タイトル<br>
-                                    <span class="required">必須</span>
-                                </th>
-                                <td class="form_input">
-                                    <input type="text" name="title" value="{{ old('title') }}" placeholder="タイトルを入力してください">
-                                </td>
-                            </tr>
-                            <div class="error-message">
-                                @error('title')
-                                <li>{{$message}}</li>
-                                @enderror
-                            </div>
-
-                            <tr class="form_line">
-                                <th class="form_item">お問い合わせ内容<br>
-                                    <span class="required">必須</span>
-                                </th>
-                                <td class="form_input">
-                                    <textarea name="content" value="{{ old('content') }}" placeholder="お問い合わせ内容を入力してください"></textarea>
-                                </td>
-                            </tr>
-                            <div class="error-message">
-                                @error('content')
-                                <li>{{$message}}</li>
-                                @enderror
-                            </div>
-
-                        </tbody>
+                            </td>
+                        </tr>
+                        
+                        <tr class="form_line">
+                            <th class="form_item">メールアドレス<br>
+                                <span class="required">必須</span>
+                            </th>
+                            <td class="form_input">
+                                <div class="error-message">
+                                    @error('mail')
+                                    <li>{{$message}}</li>
+                                    @enderror
+                                </div>
+                                <input type="email" name="mail" value="{{ old('mail') }}" placeholder="メールアドレスを入力してください">
+                            </td>
+                        </tr>
+                        
+                        <tr class="form_line">
+                            <th class="form_item">メールアドレス(確認用)<br>
+                                <span class="required">必須</span>
+                            </th>
+                            <td class="form_input">
+                                <div class="error-message">
+                                    @error('mail_confirmation')
+                                    <li>{{$message}}</li>
+                                    @enderror
+                                </div>
+                                <input type="email" name="mail_confirmation" value="{{ old('mail_confirmation') }}" placeholder="もう一度メールアドレスを入力してください">
+                            </td>
+                        </tr>
+                        
+                        <tr class="form_line">
+                            <th class="form_item">タイトル<br>
+                                <span class="required">必須</span>
+                            </th>
+                            <td class="form_input">
+                                <div class="error-message">
+                                    @error('title')
+                                    <li>{{$message}}</li>
+                                    @enderror
+                                </div>
+                                <input type="text" name="title" value="{{ old('title') }}" placeholder="タイトルを入力してください">
+                            </td>
+                        </tr>
+                        
+                        <tr class="form_line">
+                            <th class="form_item">お問い合わせ内容<br>
+                                <span class="required">必須</span>
+                            </th>
+                            <td class="form_input">
+                                <div class="error-message">
+                                    @error('content')
+                                    <li>{{$message}}</li>
+                                    @enderror
+                                </div>
+                                <textarea name="content" placeholder="お問い合わせ内容を入力してください">{{ old('content') }}</textarea>
+                            </td>
+                        </tr>
                     </table>
+
                     <div class="button">
                         <input class="submit-btn" type="submit" value="送信する">
                     </div>
-                    
-                    <div class="management_link">
-                        <a href="{{ Auth::check() ? route('contact.list') : 'http://localhost' }}">管理画面</a>                                  
-                    </div>
+                </div>
+
+                <div class="home_link">
+                    <a href="{{ url('/')}}">ホーム</a>                                  
+                </div>
+
+                <div class="management_link">
+                    <a href="{{ Auth::check() ? route('contact.list') : url('/') }}">管理画面</a>                                  
                 </div>
             </form>
 

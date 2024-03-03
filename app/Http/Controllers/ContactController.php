@@ -24,10 +24,10 @@ class ContactController extends Controller
     public function confirm(Request $request){
 
         $validation_rules =[
-            'name' =>'required|max:50',
+            'name' =>'required',
             'mail' =>'required|email',
             'mail_confirmation' =>'required|email|same:mail',
-            'title' =>'required|max:50',
+            'title' =>'required',
             'content' =>'required',
         ];
 
@@ -41,7 +41,6 @@ class ContactController extends Controller
     public function send(Request $request){
 
         $data =$request->only(['name']);
-        //dd($data);
 
         $attributes = $request->only(['name','mail','content','title']);
 
@@ -50,23 +49,48 @@ class ContactController extends Controller
         return view('contact.thank',$data);
     }
 
-    public function list(Request $request)
-    {
-        $sortField = $request->input('sort', 'created_at');
-        $sortDirection = $request->input('direction', 'desc');
 
-        $contact_list = Contact::orderBy($sortField, $sortDirection)->paginate(10);
+        
 
-        return view('contact.list', compact('contact_list'));
+
+    public function list(Request $request){
+
+    $keyword = $request->input('keyword');
+    $search_type = $request->input('search_type');
+  
+    $sortField = $request->input('sort', 'created_at');
+    $sortDirection = $request->input('direction', 'desc');
+  
+    $limit = $request->query('limit', 10);
+    $query = Contact::query();
+
+    if (!empty($keyword)) {
+        if ($search_type === 'name') {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        } elseif ($search_type === 'content') {
+            $query->where('content', 'like', '%' . $keyword . '%');
+        }
     }
+
+    $contact_list = $query->orderBy($sortField, $sortDirection)->paginate($limit);
+
+    return view('contact.list', [
+        'contact_list' => $contact_list,
+        'keyword' => $keyword,
+        'search_type' => $search_type,
+    ]);
+}
 
     public function detail($id)
     {
         $contact_detail = $this->contact_repository->getContactDetail($id);
 
+        if (!$contact_detail) {
+            abort(404); 
+        }
+
         return view('contact.detail', ['contact_detail' => $contact_detail]);
     }
-    
     
     public function destroy($id)
     {
