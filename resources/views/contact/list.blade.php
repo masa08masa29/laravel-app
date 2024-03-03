@@ -42,19 +42,20 @@
                     </form>
                 </div>
                 
-                <form class="clear"><button id=clear class="clear-button">フィルタをクリア</button></form>
-                    
+                <form class="clear"><button id=clear class="clear-button">フィルタをクリア</button></form>           
             </div>
             
                 <table class="contact-table">
                     <tr>
-                    <th>日付</th>
+                    <th>@sortablelink日付</th>
                     <th>名前</th>
+
                     <th>メールアドレス</th>
                     <th>タイトル</th>
                     <th>詳細</th>
                     <th>削除</th>
                     </tr>
+
           
                     @foreach($contact_list as $contact)
                     <tr>
