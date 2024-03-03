@@ -24,7 +24,7 @@ Route::get('/contact',[ContactController::class,'index'])->name('contact.index')
 Route::post('/contact/confirm', [ContactController::class,'confirm'])->name('contact.confirm');
 Route::post('/contact/thanks', [ContactController::class,'send'])->name('contact.send');
 
-Route::middleware(['auth', AuthenticateAdmin::class])->group(function () {
+Route::middleware(['auth',AuthenticateAdmin::class])->group(function () {
 Route::get('/contact/list',[ContactController::class,'list'])->name('contact.list');
 Route::get('/contact/detail/{id}',[ContactController::class,'detail'])->whereNumber('id')->name('contact.detail');
 Route::delete('/contact/destroy/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');

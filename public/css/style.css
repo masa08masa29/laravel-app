@@ -133,7 +133,10 @@ textarea::placeholder {
     top: -5px; 
     left: 16px;
 }
-
+.home_link{
+    margin-left: 1080px; 
+    margin-bottom: -27px; 
+}
 .management_link{
     margin-left: 1150px;
 }

@@ -24,7 +24,7 @@ class ContactController extends Controller
     public function confirm(Request $request){
 
         $validation_rules =[
-            'name' =>'required|max:30',
+            'name' =>'required',
             'mail' =>'required|email',
             'mail_confirmation' =>'required|email|same:mail',
             'title' =>'required',
@@ -43,8 +43,8 @@ class ContactController extends Controller
         return view('contact.thank');
     }
 
-    public function list(Request $request)
-{
+    public function list(Request $request){
+
     $keyword = $request->input('keyword');
     $search_type = $request->input('search_type');
   

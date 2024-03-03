@@ -94,8 +94,12 @@
                     </div>
                 </div>
 
+                <div class="home_link">
+                    <a href="{{ url('/')}}">ホーム</a>                                  
+                </div>
+
                 <div class="management_link">
-                    <a href="{{ Auth::check() ? route('contact.list') : 'http://localhost' }}">管理画面</a>                                  
+                    <a href="{{ Auth::check() ? route('contact.list') : url('/') }}">管理画面</a>                                  
                 </div>
             </form>
 
