@@ -38,9 +38,15 @@ class ContactController extends Controller
         return view('contact.confirm',$data);
     }
 
-    public function send(){
+    public function send(Request $request){
 
-        return view('contact.thank');
+        $data =$request->only(['name']);
+
+        $attributes = $request->only(['name','mail','content','title']);
+
+        Contact::create($attributes);
+
+        return view('contact.thank',$data);
     }
 
     public function list(Request $request){

@@ -13,7 +13,7 @@ class ContactsTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create('ja_JP');
 
-        foreach(range(1, 30) as $index) {
+        foreach(range(1, 500) as $index) {
             
             $created_at = $faker->unique()->dateTimeBetween('-1 years', 'now');
 
