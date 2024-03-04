@@ -48,7 +48,7 @@
             
                 <table class="contact-table">
                     <tr>
-                    <th>日付</th>
+                    <th>@sortablelink('created_at', '日付')</th>
                     <th>名前</th>
                     <th>メールアドレス</th>
                     <th>タイトル</th>
@@ -88,13 +88,6 @@
               </div>
         </div>
     </div>
-
-    <script>
-      function changeDisplayLimit() {
-          var limit = document.querySelector('input[name="limit"]:checked').value;
-          window.location.href = "{{ route('contact.list') }}?limit=" + limit;
-      }
-    </script>
 
     <script>
       function changeDisplayLimit() {

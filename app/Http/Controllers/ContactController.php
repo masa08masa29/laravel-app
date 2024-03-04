@@ -49,11 +49,14 @@ class ContactController extends Controller
         return view('contact.thank',$data);
     }
 
-    public function list(Request $request){
-
+    public function list(Request $request)
+{
     $keyword = $request->input('keyword');
     $search_type = $request->input('search_type');
-  
+
+    $sortField = $request->input('sort', 'created_at');
+    $sortDirection = $request->input('direction', 'desc');
+
     $limit = $request->query('limit', 10);
     $query = Contact::query();
 
@@ -65,7 +68,11 @@ class ContactController extends Controller
         }
     }
 
-    $contact_list = $query->orderBy('id', 'desc')->paginate($limit);
+    if ($sortField && $sortDirection) {
+        $query->orderBy($sortField, $sortDirection);
+    }
+
+    $contact_list = $query->paginate($limit);
 
     return view('contact.list', [
         'contact_list' => $contact_list,
@@ -73,6 +80,7 @@ class ContactController extends Controller
         'search_type' => $search_type,
     ]);
 }
+
 
     public function detail($id)
     {
