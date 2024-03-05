@@ -23,7 +23,6 @@
                     <a href="/contact">お問い合わせフォームに戻る</a>
                 </div>
             </div>
-
         </div>
     </div>
 

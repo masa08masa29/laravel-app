@@ -45,10 +45,14 @@
 }
 
 .form_line th {
-    width: 200px;
+    width: 180px;
     padding-right: 30px;
     text-align: center;
     line-height:1.5em;
+}
+
+.form_line td {
+    width:420px;
 }
 
 .button{
@@ -139,6 +143,11 @@ textarea::placeholder {
 }
 .management_link{
     margin-left: 1150px;
+}
+
+.form_input input,
+.form_input textarea{
+    background-color: #dbd8d8;
 }
 
 /******************************************************************
@@ -287,7 +296,7 @@ width:30%;
 *******************************************************************/
 .radio-container {
     display: flex;
-  }
+}
   
 .radio-container input[type="radio"] {
     display: none;
@@ -375,7 +384,3 @@ body{
     font-family: 'Times New Roman', serif;
 }
 
-.form_input input,
-.form_input textarea{
-    background-color: #dbd8d8;
-}

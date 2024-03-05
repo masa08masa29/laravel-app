@@ -81,7 +81,6 @@ class ContactController extends Controller
     ]);
 }
 
-
     public function detail($id)
     {
         $contact_detail = $this->contact_repository->getContactDetail($id);

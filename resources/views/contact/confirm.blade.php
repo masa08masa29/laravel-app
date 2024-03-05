@@ -5,14 +5,14 @@
 @section('content')
 
     <div class="container">
-            <div class="contact">
-                <h1>お問い合わせフォーム</h1>
-                <div class="step">
-                    <div class="step_nocurrent">お問い合わせ内容の入力</div>
-                    <div class="step_current">入力内容の確認</div>
-                    <div class="step_nocurrent">送信完了</div>
-                </div>
-            
+        <div class="contact">
+            <h1>お問い合わせフォーム</h1>
+            <div class="step">
+                <div class="step_nocurrent">お問い合わせ内容の入力</div>
+                <div class="step_current">入力内容の確認</div>
+                <div class="step_nocurrent">送信完了</div>
+            </div>
+        
             <form action="{{ route('contact.send') }}" method="post">
             @csrf    
                 <div class="confirm_container">
@@ -51,9 +51,7 @@
                 <div class="button">
                     <input class="submit-btn" type="submit" value="入力内容を送信する">
                 </div>
-            </form>
-            
+            </form>           
         </div>
-    </div>
-    
+    </div> 
 @endsection
