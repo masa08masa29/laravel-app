@@ -270,6 +270,13 @@ width:30%;
     font-family: 'Times New Roman', serif;
     margin-left: 10px;
 }
+.contact-table th a {
+    text-decoration: none; /* リンクの下線を消す */
+}
+
+a.sorted {
+    color: blue;
+}
 
 /******************************************************************
   お問い合わせ詳細ページ

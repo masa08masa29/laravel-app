@@ -19,19 +19,22 @@
                 <div class="radio-container">
                     <form action="{{ route('contact.list') }}" method="get" id="limitForm">
                         <input type="radio" name="limit" id="limit1" value="5"
-                            {{ $limitHidden == 5 ? 'checked' : '' }}>
+                            {{ $limit == 5 ? 'checked' : '' }}>
                         <label for="limit1">5件</label>
             
                         <input type="radio" name="limit" id="limit2" value="10"
-                            {{ $limitHidden == 10 ? 'checked' : '' }}>
+                            {{ $limit == 10 ? 'checked' : '' }}>
                         <label for="limit2">10件</label>
             
                         <input type="radio" name="limit" id="limit3" value="15"
-                            {{ $limitHidden == 15 ? 'checked' : '' }}>
+                            {{ $limit == 15 ? 'checked' : '' }}>
                         <label for="limit3">15件</label>
-            
+                        
+                        <!-- 現在のソートの状態を hidden フィールドで送信 -->
+                        <input type="hidden" name="sort" value="{{ $sortField }}">
+                        <input type="hidden" name="direction" value="{{ $sortDirection }}">
                         <!-- 検索キーワードの hidden フィールド -->
-                        <input type="hidden" name="keyword" value="{{ $keywordHidden }}">
+                        <input type="hidden" name="keyword" value="{{ $keyword }}">
                         <button type="submit" class="apply-button">適用</button>
                     </form>
                 </div>
@@ -41,8 +44,12 @@
                 <form action="{{ route('contact.list') }}" method="get">
                     <!-- 検索キーワードの入力フィールド -->
                     <input type="text" name="keyword" placeholder="キーワードを入力" value="{{ $keyword }}">
+
+                    <!-- 現在のソートの状態を hidden フィールドで送信 -->
+                    <input type="hidden" name="sort" value="{{ $sortField }}">
+                    <input type="hidden" name="direction" value="{{ $sortDirection }}">
                     <!-- 表示件数の hidden フィールド -->
-                    <input type="hidden" name="limit" value="{{ $limitHidden }}">
+                    <input type="hidden" name="limit" value="{{ $limit }}">
                     <input type="submit" value="検索">
                 </form>
             </div>
@@ -51,11 +58,25 @@
                 <button type="submit" class="clear-button" id="clear">フィルタをクリア</button>
             </form>
         </div>
-        
-        
+                
             <table class="contact-table">
                 <tr>
-                    <th>@sortablelink('created_at', '日付')</th>
+                    <th>
+                        <a href="{{ request()->fullUrlWithQuery(['sort' => 'created_at', 'direction' => ($sortField === 'created_at' && $sortDirection === 'asc') ? 'desc' : 'asc']) }}"
+                            class="sorted">
+                            日付
+                            @if ($sortField === 'created_at')
+                                @if ($sortDirection === 'asc')
+                                    <i class="fas fa-caret-up"></i>
+                                @else
+                                    <i class="fas fa-caret-down"></i>
+                                @endif
+                            @else
+                                <i class="fas fa-caret-up"></i>
+                                <i class="fas fa-caret-down"></i>
+                            @endif
+                        </a>
+                    </th>
                     <th>名前</th>
                     <th>メールアドレス</th>
                     <th>タイトル</th>
@@ -87,9 +108,9 @@
                 @endforeach
             </table>
         
-            @if ($showPagination && $contact_list->total() > $limitHidden)
-    {{ $contact_list->appends(['keyword' => $keyword, 'limit' => $limit])->links('pagination::bootstrap-4') }}
-@endif
+            @if ($showPagination && $contact_list->total() > $limit)
+            {{ $contact_list->appends(['keyword' => $keyword, 'limit' => $limit])->links('pagination::bootstrap-4') }}
+            @endif
 
             <div class="contact_link">
                 <a href="/contact">お問い合わせフォームに戻る</a>

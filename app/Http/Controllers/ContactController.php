@@ -53,7 +53,7 @@ class ContactController extends Controller
 {
     // リクエストからキーワード、ソート、表示件数を取得
     $keyword = $request->input('keyword');
-    $sortField = $request->input('sort', 'created_at');
+    $sortField = $request->input('sort', 'id');
     $sortDirection = $request->input('direction', 'desc');
     $limit = $request->input('limit', 10);  // リクエストから取得、デフォルトは10件
 
@@ -71,20 +71,15 @@ class ContactController extends Controller
     // ソート条件を追加
     $query->orderBy($sortField, $sortDirection);
 
-    // ページネーションを使ってデータを取得
+    // データを取得
     $contact_list = $query->paginate($limit);
 
     // ページネーションの表示を制御
     $showPagination = !empty($keyword) && in_array($limit, [5, 10, 15]);
 
-    return view('contact.list', [
-        'contact_list' => $contact_list,
-        'keyword' => $keyword,
-        'limitHidden' => $limit,
-        'keywordHidden' => $keyword,
-        'showPagination' => $showPagination, // ページネーションの表示制御をビューに渡す
-    ]);
+    return view('contact.list', compact('contact_list', 'keyword', 'limit', 'showPagination', 'sortField', 'sortDirection'));
 }
+
 
     public function detail($id)
     {

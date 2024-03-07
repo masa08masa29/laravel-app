@@ -7,10 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class ContactRepository
 {
-    public function getContactList($limit){
-
-        return Contact::latest()->paginate($limit);
-    }
 
     public function getContactDetail($id){
       
