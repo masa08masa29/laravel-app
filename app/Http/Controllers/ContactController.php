@@ -51,33 +51,38 @@ class ContactController extends Controller
 
     public function list(Request $request)
 {
+    // リクエストからキーワード、ソート、表示件数を取得
     $keyword = $request->input('keyword');
-    $search_type = $request->input('search_type');
-
     $sortField = $request->input('sort', 'created_at');
     $sortDirection = $request->input('direction', 'desc');
+    $limit = $request->input('limit', 10);  // リクエストから取得、デフォルトは10件
 
-    $limit = $request->query('limit', 10);
+    // クエリビルダーを使ってデータを取得
     $query = Contact::query();
 
+    // キーワードがあれば検索条件を追加
     if (!empty($keyword)) {
-        if ($search_type === 'name') {
-            $query->where('name', 'like', '%' . $keyword . '%');
-        } elseif ($search_type === 'content') {
-            $query->where('content', 'like', '%' . $keyword . '%');
-        }
+        $query->where(function($q) use ($keyword) {
+            $q->where('name', 'like', '%' . $keyword . '%')
+                ->orWhere('content', 'like', '%' . $keyword . '%');
+        });
     }
 
-    if ($sortField && $sortDirection) {
-        $query->orderBy($sortField, $sortDirection);
-    }
+    // ソート条件を追加
+    $query->orderBy($sortField, $sortDirection);
 
+    // ページネーションを使ってデータを取得
     $contact_list = $query->paginate($limit);
+
+    // ページネーションの表示を制御
+    $showPagination = !empty($keyword) && in_array($limit, [5, 10, 15]);
 
     return view('contact.list', [
         'contact_list' => $contact_list,
         'keyword' => $keyword,
-        'search_type' => $search_type,
+        'limitHidden' => $limit,
+        'keywordHidden' => $keyword,
+        'showPagination' => $showPagination, // ページネーションの表示制御をビューに渡す
     ]);
 }
 
