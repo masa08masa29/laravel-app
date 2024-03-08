@@ -109,7 +109,8 @@
             </table>
         
             @if ($showPagination && $contact_list->total() > $limit)
-            {{ $contact_list->appends(['keyword' => $keyword, 'limit' => $limit])->links('pagination::bootstrap-4') }}
+            {{ $contact_list->appends(['keyword' => $keyword, 'limit' => $limit, 'sort' => $sortField, 'direction' => $sortDirection])->links('pagination::bootstrap-4') }}
+
             @endif
 
             <div class="contact_link">
