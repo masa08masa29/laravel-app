@@ -13,7 +13,7 @@
         @endif
 
         <div class="filter-wrapper">
-            <!-- 表示件数の選択フォーム -->
+            
             <div class="items_per_page">
                 <p>表示件数</p>
                 <div class="radio-container">
@@ -31,10 +31,14 @@
                         <label for="limit3">15件</label>
                         
                         <!-- 現在のソートの状態を hidden フィールドで送信 -->
+                        @if (!($sortField === 'id' && $sortDirection === 'desc'))
                         <input type="hidden" name="sort" value="{{ $sortField }}">
                         <input type="hidden" name="direction" value="{{ $sortDirection }}">
+                        @endif
                         <!-- 検索キーワードの hidden フィールド -->
+                        @if (!empty($keyword))
                         <input type="hidden" name="keyword" value="{{ $keyword }}">
+                        @endif
                         <button type="submit" class="apply-button">適用</button>
                     </form>
                 </div>
@@ -42,12 +46,12 @@
         
             <div class="contact_search">
                 <form action="{{ route('contact.list') }}" method="get">
-                    <!-- 検索キーワードの入力フィールド -->
                     <input type="text" name="keyword" placeholder="キーワードを入力" value="{{ $keyword }}">
-
                     <!-- 現在のソートの状態を hidden フィールドで送信 -->
+                    @if (!($sortField === 'id' && $sortDirection === 'desc'))
                     <input type="hidden" name="sort" value="{{ $sortField }}">
                     <input type="hidden" name="direction" value="{{ $sortDirection }}">
+                    @endif
                     <!-- 表示件数の hidden フィールド -->
                     <input type="hidden" name="limit" value="{{ $limit }}">
                     <input type="submit" value="検索">
@@ -90,13 +94,11 @@
                     <td>{{$contact->name}}</td>
                     <td>{{$contact->mail}}</td>
                     <td>{{$contact->title}}</td>
-
                     <td>
                         <a href="{{ route('contact.detail', ['id' => $contact->id]) }}">
                             <button type="submit" class="btn-detail">詳細</button>
                         </a>
                     </td>
-                
                     <td>
                         <form action="{{ route('contact.destroy', ['id'=>$contact->id]) }}" method="POST">
                         @csrf
@@ -110,7 +112,6 @@
         
             @if ($showPagination && $contact_list->total() > $limit)
             {{ $contact_list->appends(['keyword' => $keyword, 'limit' => $limit, 'sort' => $sortField, 'direction' => $sortDirection])->links('pagination::bootstrap-4') }}
-
             @endif
 
             <div class="contact_link">
@@ -118,6 +119,4 @@
             </div>
     </div>
 </div>
-
-
 @endsection

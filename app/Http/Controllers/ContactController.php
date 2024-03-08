@@ -80,7 +80,6 @@ class ContactController extends Controller
     return view('contact.list', compact('contact_list', 'keyword', 'limit', 'showPagination', 'sortField', 'sortDirection'));
 }
 
-
     public function detail($id)
     {
         $contact_detail = $this->contact_repository->getContactDetail($id);
