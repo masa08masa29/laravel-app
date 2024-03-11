@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Repositories\ContactRepository;
 
-
 class ContactController extends Controller
 {
     protected $contact_repository;
@@ -51,16 +50,15 @@ class ContactController extends Controller
 
     public function list(Request $request)
 {
-    // リクエストからキーワード、ソート、表示件数を取得
     $keyword = $request->input('keyword');
     $sortField = $request->input('sort', 'id');
     $sortDirection = $request->input('direction', 'desc');
-    $limit = $request->input('limit', 10);  // リクエストから取得、デフォルトは10件
+    $limit = $request->input('limit', 10); 
 
-    // クエリビルダーを使ってデータを取得
     $query = Contact::query();
 
-    // キーワードがあれば検索条件を追加
+    $total_contacts =$query->count();
+
     if (!empty($keyword)) {
         $query->where(function($q) use ($keyword) {
             $q->where('name', 'like', '%' . $keyword . '%')
@@ -68,16 +66,11 @@ class ContactController extends Controller
         });
     }
 
-    // ソート条件を追加
     $query->orderBy($sortField, $sortDirection);
 
-    // データを取得
     $contact_list = $query->paginate($limit);
 
-    // ページネーションの表示を制御
-    $showPagination = !empty($keyword) && in_array($limit, [5, 10, 15]);
-
-    return view('contact.list', compact('contact_list', 'keyword', 'limit', 'showPagination', 'sortField', 'sortDirection'));
+    return view('contact.list', compact('contact_list', 'total_contacts','keyword', 'limit', 'sortField', 'sortDirection'));
 }
 
     public function detail($id)

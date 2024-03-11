@@ -9,7 +9,7 @@
         <h1>お問い合わせ一覧</h1>
 
         @if (!$contact_list->isEmpty())
-            <h3 id="contact_count">お問い合わせ件数: {{ $contact_list->total() }}件</h3>
+    <h3 id="contact_count">お問い合わせ件数: {{ $contact_list->total() }}/{{$total_contacts}}件</h3>
         @endif
 
         <div class="filter-wrapper">
@@ -17,7 +17,7 @@
             <div class="items_per_page">
                 <p>表示件数</p>
                 <div class="radio-container">
-                    <form action="{{ route('contact.list') }}" method="get" id="limitForm">
+                    <form action="{{ route('contact.list') }}" method="get">
                         <input type="radio" name="limit" id="limit1" value="5"
                             {{ $limit == 5 ? 'checked' : '' }}>
                         <label for="limit1">5件</label>
@@ -30,15 +30,16 @@
                             {{ $limit == 15 ? 'checked' : '' }}>
                         <label for="limit3">15件</label>
                         
-                        <!-- 現在のソートの状態を hidden フィールドで送信 -->
+                        
                         @if (!($sortField === 'id' && $sortDirection === 'desc'))
                         <input type="hidden" name="sort" value="{{ $sortField }}">
                         <input type="hidden" name="direction" value="{{ $sortDirection }}">
                         @endif
-                        <!-- 検索キーワードの hidden フィールド -->
+                        
                         @if (!empty($keyword))
                         <input type="hidden" name="keyword" value="{{ $keyword }}">
                         @endif
+
                         <button type="submit" class="apply-button">適用</button>
                     </form>
                 </div>
@@ -47,12 +48,11 @@
             <div class="contact_search">
                 <form action="{{ route('contact.list') }}" method="get">
                     <input type="text" name="keyword" placeholder="キーワードを入力" value="{{ $keyword }}">
-                    <!-- 現在のソートの状態を hidden フィールドで送信 -->
+                    
                     @if (!($sortField === 'id' && $sortDirection === 'desc'))
                     <input type="hidden" name="sort" value="{{ $sortField }}">
                     <input type="hidden" name="direction" value="{{ $sortDirection }}">
                     @endif
-                    <!-- 表示件数の hidden フィールド -->
                     <input type="hidden" name="limit" value="{{ $limit }}">
                     <input type="submit" value="検索">
                 </form>
@@ -110,10 +110,8 @@
                 @endforeach
             </table>
         
-            @if ($showPagination && $contact_list->total() > $limit)
             {{ $contact_list->appends(['keyword' => $keyword, 'limit' => $limit, 'sort' => $sortField, 'direction' => $sortDirection])->links('pagination::bootstrap-4') }}
-            @endif
-
+            
             <div class="contact_link">
                 <a href="/contact">お問い合わせフォームに戻る</a>
             </div>

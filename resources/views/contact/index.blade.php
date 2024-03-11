@@ -99,11 +99,9 @@
                 </div>
 
                 <div class="management_link">
-                    <a href="{{ Auth::check() ? route('contact.list') : url('/') }}">管理画面</a>                                  
+                    <a href="{{ Auth::check() ? route('contact.list') : url('/login') }}">管理画面</a>                                  
                 </div>
             </form>
-
         </div>
     </div>
-
 @endsection
